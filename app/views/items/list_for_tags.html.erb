@@ -1,0 +1,9 @@
+<h1><%= @tag_array.collect { |a| link_to a, tag_url(a) }.join(' &amp; ') %></h1>
+
+<% @items.each do |item| %>
+  <%= render :partial => 'item', :locals => { :item => item } -%>
+<% end %>
+
+<br />
+
+<%= link_to 'New item', new_item_path %>

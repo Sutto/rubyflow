@@ -1,0 +1,8 @@
+<h1>Listing categories</h1>
+
+
+<%= render :partial => 'part_of_tree', :locals => { :current_category => @top_category } %>
+
+<br />
+
+<%= link_to 'New category', new_category_path if admin? %>

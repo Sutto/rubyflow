@@ -1,0 +1,8 @@
+<p>
+<% words = %w{renegade nevergonna giveyouup letyoudown runaround starla luckystiff inside an at ax al pol paypal nidd nid pin pit pragmatic astley twogirls onecup felch kwyjibo covenham kenwick grimsby warlingham cooper macbook triumph air mascot football hockey tennis shadow bullet metaphor flyer twitter yahoo google coding ruby masterplan spyhole porthole boat float granite trousers dragon tiger} %>
+<% post_words = %w{in ox et by rat tar al s ty ax ak an at de er ers} %>
+<div id="captcha_display"><% random_word = words[rand(words.size)] + post_words[rand(post_words.size)]; random_word.each_byte do |char| %><%= char.chr.upcase %><%= %Q{<sup>#{char.chr.upcase}</sup>} if rand(3) == 0 %><!-- <%= Time.now.to_i %> --><% end %></div><br />
+<label for="captcha">Enter The Word Displayed In <span style="background-color: #c00; color: #fff">WHITE ON RED</span> Above</label><br />
+<%= text_field_tag "captcha" %>
+<%= hidden_field_tag "captcha_guide", Digest::SHA1.hexdigest(random_word.upcase)[0..5] %>
+</p>

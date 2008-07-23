@@ -1,0 +1,9 @@
+<h1>Welcome</h1>
+
+<% if logged_in? %>
+	<p>You are logged in as <%=h current_user.login %></p>
+	<%= "you are admin" if admin? %>
+
+<% else %>
+  <p>You are not logged in.</p>
+<% end %>

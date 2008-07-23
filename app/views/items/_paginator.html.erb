@@ -1,0 +1,8 @@
+<div class="leftright">
+  <% if @page_number > 1 %>
+    <div class="left"><a href="<%= @page_number == 2 ? root_url : url_for(:page => @page_number - 1) %>">&laquo; Newer</a></div>
+  <% end %>
+  <% if @items_count > (@page_number * items_per_page) %>
+    <div class="right"><a href="<%= url_for(:page => @page_number + 1) %>">Older &raquo;</a></div>
+  <% end %>
+</div>

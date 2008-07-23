@@ -1,0 +1,8 @@
+<div style="margin-left: 1em; background-color: #<%= cycle('eee', 'ccc') %>">
+<% current_category.children.each do |category| %>
+      <p><%= link_to h(category.publicly_facing_name), category %>
+    <%= link_to('Edit', edit_category_path(category)) if admin? %>
+    <%= link_to('Destroy', category, :confirm => 'Are you sure?', :method => :delete) if admin? %></p>
+  <%= render :partial => 'part_of_tree', :locals => { :current_category => category } if category.children && !category.children.empty? %>
+<% end %>
+</div>

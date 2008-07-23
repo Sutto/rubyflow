@@ -1,0 +1,15 @@
+<style>
+TD { border: 1px }
+</style>
+<table cellspacing="4" border="1" cellpadding="2">
+<% @users.each do |user| %>
+  <tr>
+    <td>&nbsp;&nbsp;<%= user.id %>&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;<%= user.login %>&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;<%= user.url %>&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;<%= user.created_at.strftime("%b %d, %Y") %>&nbsp;&nbsp;</td>
+    <td>&nbsp;&nbsp;<%= user.approved_for_feed %>&nbsp;&nbsp;</td>
+    <td><%= link_to 'approve', :action => 'approve', :id => user.id %> | <%= link_to 'disapprove', :action => 'disapprove', :id => user.id %> | <%= link_to 'delete', :action => 'destroy', :id => user.id, :method => :post %></td>
+  </tr>
+<% end %>
+</table>

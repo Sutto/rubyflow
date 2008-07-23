@@ -1,0 +1,31 @@
+<h1>New category</h1>
+
+<%= error_messages_for :category %>
+
+<% form_for(@category) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Parent Category</b><br />
+    <%= select_tag "category[parent_id]", options_for_select(Category.find(:all).collect { |c| [c.name, c.id] }) %>
+  </p>
+
+  <p>
+    <b>Query</b><br />
+    <%= f.text_field :query %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', categories_path %>

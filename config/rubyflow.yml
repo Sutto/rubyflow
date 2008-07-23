@@ -1,0 +1,18 @@
+app_name: rubyflow
+app_title: RubyFlow
+default_title: "RubyFlow : Community Filtered Ruby News"
+sub_title: "Community-maintained Ruby News"
+app_url: http://www.rubyflow.com/
+rss_url: http://feeds.feedburner.com/Rubyflow
+meta_keywords: "ruby, ruby news, ruby blog, rails, rubyonrails"
+meta_author: "Peter Cooper"
+body_class: rubyflow
+ga: UA-2237791-7
+sidebar: |-
+  <h3>What?</h3><p>RubyFlow is a community driven Ruby links site. Items are not added automatically, but chosen and summarized by the community, resulting in a higher quality of links than <a href="http://ruby.reddit.com/">social bookmarking sites.</a></p>
+  <h3>Japanese / Nihongo?</h3><p>There is <a href="http://www.kuwata-lab.com/rubyflow-ja/">a Japanese version of RubyFlow</a> available, thanks to Makoto Kuwata!</p>
+  <h3>How?</h3><p>Enjoy the links, comment or <a href="/items/new">make a post</a> of your own. You don't need to be signed in!</p>
+  <p><em>Note: If you're not signed in, your byline is unlinked and your links are made "nofollow" to prevent spam. You also get CAPTCHAed!</em></p>
+  <h3>Who?</h3><p>RubyFlow was built by <a href="http://peterc.org/">Peter Cooper</a> of <a href="http://www.rubyinside.com/" rel="nofollow">Ruby Inside</a>, but is ultimately a community site.</p>
+  <p><small>Yes, this site is influenced by <a href="http://www.metafilter.com/">MetaFilter</a>. I wrote a popular MetaFilter <a href="http://www.google.com/search?q=metafilter+freefilter">clone</a> back in the day so it's okay!</small></p>
+  <p><a href="http://feeds.feedburner.com/Rubyflow"><img src="http://feeds.feedburner.com/~fc/Rubyflow?bg=cc0000&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>

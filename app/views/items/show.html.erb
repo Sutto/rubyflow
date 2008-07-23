@@ -1,0 +1,41 @@
+<div class="post">
+	<h2><%=h @item.title %></h2>
+	<div class="date"><%= @item.created_at.strftime("%B %d, %Y") %></div>
+	<div class="entry"><%= safe(@item.content) %></div>
+	<div class="metadata">Posted by <%= @item.user ? %Q{<a href="#{@item.user.url}">#{@item.user.login}</a>} : @item.byline %> at <%= @item.created_at.strftime("%R") %> - <a href="<%= url_for item_url(@item) %>"><%= pluralize @item.comments.size, 'comment' %></a> <%= link_to 'Edit', edit_item_path(@item) if admin? %> <%= link_to 'Destroy', @item, :confirm => 'Are you sure?', :method => :delete if admin? %></div>
+</div>
+
+<div id="comments">
+  <% @item.comments.each do |comment| %>
+    <blockquote class="comment"><span class="a">&#147;</span><span class="b">&#148;</span><%= safe(comment.content) %><cite><%= comment.user ? %Q{<a href="#{comment.user.url}">#{comment.user.login}</a>} : comment.byline %> - <%= comment.created_at.strftime("%B %d, %Y %R") %></cite></blockquote>
+  <% end %>
+  
+  <blockquote class="comment">
+    <span class="a">&#147;</span><span class="b">&#148;</span>
+    
+    <% form_for(@comment) do |f| %>
+      <input type="hidden" name="item_id" value="<%= @item.id %>" />
+      
+    <h3>Post a Comment</h3>
+
+    <% if @comment.errors.size > 0 %>
+      <p class="message">Error! Your comment is too long or too short.</p>
+    <% end %>
+
+      
+	  <% if logged_in? %>
+      <p>Posting as <strong><%= current_user.login %></strong></p>
+	  <% else %>
+	    <p><em>Note: If you are a registered user, <%= link_to 'log in', login_url %> to populate these fields.</em></p>
+      <p><%= f.text_field :byline %>
+      <label for="author"><small>Name / Byline (required)</small></label></p>
+	  <% end %>
+	  <p style="font-size: 13px; background-color: #ffc; padding: 4px 16px; border-left: 3px solid #999; font-family: verdana; line-height: 15px; letter-spacing: 0px"><strong>If you wish, you may use these HTML tags to format your comment:</strong><br /><code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strong&gt;</code></small></p>
+	  <p><%= f.text_area :content %></p>
+	  <%= render :partial => 'home/signup_captcha' unless logged_in? %>
+    <p><%= f.submit "Post Comment" %></p>
+	  <% end %>
+    
+	</blockquote>
+  
+</div>

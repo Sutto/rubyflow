@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	  <title><%= title %></title>
+	  <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+	  <meta name="robots" content="index, follow" />
+    <% if @front_page %> <meta name="description" content="<%= APP_CONFIG[:sub_title] %>" />
+     <meta name="keywords" content="<%= APP_CONFIG[:meta_keywords] %>" /> <% end %>
+	  <meta name="author" content="<%= APP_CONFIG[:meta_author] %>" />
+	  <% if @noindex %><meta name="robots" content="noindex, nofollow" /><% end -%>
+	  <link rel="alternate" type="application/rss+xml" title="<%= APP_CONFIG[:app_title] %>" href="<%= APP_CONFIG[:rss_url] %>" />	    
+		<%= stylesheet_link_tag "main" %>
+	</head>
+
+	<body class="<%= @body_class %> <%= APP_CONFIG[:body_class] %>">
+	
+  	<div id="header">
+  		<h1><a href="/" class="home"><%= APP_CONFIG[:app_title] %></a></h1>
+  		<div id="stuff">
+  		  <%= link_to 'Home', root_url %> | <a href="<%= APP_CONFIG[:rss_url] %>">RSS Feed</a> | 
+  		  <%= link_to 'Post Item', new_item_path, :class => 'rubyred' %> |
+  		  <% if logged_in? %>
+  		    <%= link_to 'Log Out', logout_url %>
+  		  <% else %>
+  			  <%= link_to 'Sign Up', signup_url %> | <%= link_to 'Log In', login_url %>
+  			<% end %>
+  		</div>
+  	</div>
+  	
+  	<div id="page">
+  		<div id="content">
+      <% if flash[:notice] %><p class="message"><%= flash[:notice] %></p><% end %>
+	    <%= yield %>
+		  </div>
+		  
+		  <div id="sidebar">
+				<%= APP_CONFIG[:sidebar] %>
+			</div><!-- sidebar -->
+			
+			<div class="float"></div><div class="floatcontainer"><div class="float"></div></div>
+			
+		</div>
+	<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  var pageTracker = _gat._getTracker("<%= APP_CONFIG[:ga] %>");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+  </script>
+	</body>
+</html>

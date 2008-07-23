@@ -1,0 +1,16 @@
+<h2>Log In To The Flow</h2>
+
+<% form_tag session_path do -%>
+<p><label for="login">Login</label><br/>
+<%= text_field_tag 'login' %></p>
+
+<p><small>Note that logins are case sensitive. Use the same casing as displays on the site / you used at signup.</small></p>
+
+<p><label for="password">Password</label><br/>
+<%= password_field_tag 'password' %></p>
+
+<p><label for="remember_me">Remember me (for a year):</label>
+<%= check_box_tag 'remember_me' %></p>
+
+<p><%= submit_tag 'Log In' %></p>
+<% end -%>

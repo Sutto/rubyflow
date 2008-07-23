@@ -1,0 +1,12 @@
+<%= render :partial => 'items/paginator' if @page_number > 1 %>
+
+<% last_date = nil %>
+<% @items.each do |item| %>
+  <% unless last_date && last_date.day == item.created_at.day && last_date.month == item.created_at.month && last_date.year == item.created_at.year %>
+    <div class="date"><%= item.created_at.strftime("%B %d, %Y") %></div>
+    <% last_date = item.created_at %>
+  <% end %>
+  <%= render :partial => 'item', :locals => { :item => item } -%>
+<% end %>
+
+<%= render :partial => 'items/paginator' %>

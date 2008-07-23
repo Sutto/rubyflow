@@ -1,0 +1,14 @@
+<h1><%= @category.title %></h1>
+
+<% for item in @items %>
+  <%=h item.title %><br />
+  <%=h item.url %><br />
+  <%=h item.content %><br />
+  <%=h item.metadata %><br />
+  <%=h item.name %><br />
+  <%=h item.tags %><br />
+  <%=h item.user_id %><br />
+  <%= link_to 'Show', item %><br />
+  <%= link_to 'Edit', edit_item_path(item) %><br />
+  <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %><br />
+<% end %>

@@ -1,0 +1,8 @@
+
+<% @items.each do |item| %>
+  <%= render :partial => 'item', :locals => { :item => item } -%>
+<% end %>
+
+<br />
+
+<%= link_to 'New item', new_item_path %>
