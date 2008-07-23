@@ -1,8 +1,23 @@
+<h3>Search Results</h3>
+
+<%= render :partial => "search_form" %>
+
+<%= render :partial => 'items/paginator' if @page_number > 1 %>
 
 <% @items.each do |item| %>
   <%= render :partial => 'item', :locals => { :item => item } -%>
 <% end %>
 
+<% if @items.empty? %>
+  <p class="no-results">No Results? Try another search query.</p>
+<% end %>
+
 <br />
 
-<%= link_to 'New item', new_item_path %>
+Didn't find what you're looking for? Add a <%= link_to 'new item', new_item_path %>!
+
+<br />
+
+<%= render :partial => 'items/paginator' %>
+
+

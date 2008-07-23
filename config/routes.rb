@@ -5,7 +5,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/page/:page', :controller => 'items', :action => 'index'
 
-
   map.root :controller => 'items'
 
 
@@ -23,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   map.tag '/tag/:id', :controller => 'items', :action => 'list_for_tags'
   map.tags '/tags/:id', :controller => 'items', :action => 'list_for_tags'
   map.tags_by_folders '/tags/*id', :controller => 'items', :action => 'list_for_tags'
-  map.search '/search/:id', :controller => 'items', :action => 'search'
+  map.search '/search', :controller => 'items', :action => 'search'
   map.category '/category/:id', :controller => 'items', :action => 'category'
   
   # The priority is based upon order of creation: first created -> highest priority.

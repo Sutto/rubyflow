@@ -21,6 +21,7 @@
   		<div id="stuff">
   		  <%= link_to 'Home', root_url %> | <a href="<%= APP_CONFIG[:rss_url] %>">RSS Feed</a> | 
   		  <%= link_to 'Post Item', new_item_path, :class => 'rubyred' %> |
+  		  <%= link_to 'Search', search_path %> |
   		  <% if logged_in? %>
   		    <%= link_to 'Log Out', logout_url %>
   		  <% else %>

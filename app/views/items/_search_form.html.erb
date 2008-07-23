@@ -1,0 +1,3 @@
+<% form_tag search_path, :id => "search-form" do %>
+  <strong>Search for</strong> <%= text_field_tag :q, params[:q] %> <%= submit_tag "Find" %>
+<% end %>

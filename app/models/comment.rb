@@ -1,4 +1,7 @@
 class Comment < ActiveRecord::Base
+  
+  acts_as_ferret
+  
   belongs_to :item, :counter_cache => true
   belongs_to :user
   

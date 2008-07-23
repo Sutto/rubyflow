@@ -142,9 +142,11 @@ class ItemsController < ApplicationController
   end
   
   def search
-    @items_count = Item.count(:conditions => ['title LIKE ? OR tags LIKE ?', "%#{params[:id]}%", "%#{params[:id]}%"])
-    @items = Item.find(:all, {:conditions => ['title LIKE ? OR tags LIKE ?', "%#{params[:id]}%", "%#{params[:id]}%"]}.merge(@pagination_options))
-    @noindex = true
+    return render(:action => "search_form") unless request.post? 
+    return redirect_to(root_path) if params[:q].blank?
+    @items_count = Item.total_hits(params[:q])
+    @items       = Item.find_with_ferret(params[:q], @pagination_options)
+    @noindex     = true
 
     respond_to do |format|
       format.html

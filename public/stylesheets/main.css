@@ -336,6 +336,15 @@ width: 500px; height: 220px;
   letter-spacing: 5px;
 }
 
+#search-form {
+  padding: 0 10px 10px;
+  font-size: 1.2em;
+}
+
+#search-form input {
+  font-size: 1em;
+}
+
 H1 A { color: #c00; }
 
 /* @end */
