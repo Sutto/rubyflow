@@ -1,6 +1,6 @@
 RUBYFLOW
 ========
-Developed by Peter Cooper - 2008
+_Developed by Peter Cooper - 2008_
 
 All code developed by Peter Cooper within this project is in the public domain.
 Plugins, Rails, and derivative code is licensed as it was originally (mostly MIT).
@@ -17,6 +17,8 @@ I have not tested these instructions, but from memory..
 configuration changes.
 
 2. Run rake db:migrate to set up your database.
+ 
+3. Configure your site-specific settings (see "Multiple Sites", below).
 
 Multiple Sites
 --------------
