@@ -1,7 +1,6 @@
 RUBYFLOW
+========
 Developed by Peter Cooper - 2008
-
----
 
 All code developed by Peter Cooper within this project is in the public domain.
 Plugins, Rails, and derivative code is licensed as it was originally (mostly MIT).
@@ -9,13 +8,18 @@ Plugins, Rails, and derivative code is licensed as it was originally (mostly MIT
 This code is entirely unsupported, lacks tests, and could well make your machine
 explode. If you use it, you understand this and accept all the risks.
 
---- 
 
-TO GET STARTED
-
+Getting Started
+---------------
 I have not tested these instructions, but from memory..
 
-Check config/database.yml and run migrations.
+1. Rename config/database.yml.dist to database.yml and make the appropriate
+configuration changes.
+
+2. Run rake db:migrate to set up your database.
+
+Multiple Sites
+--------------
 
 The RubyFlow code is designed to deal with multiple sites from one codebase (although not one installation).
 The settings for a particular site are in config/[sitename].yml
