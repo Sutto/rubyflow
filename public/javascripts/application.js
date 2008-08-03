@@ -13,10 +13,7 @@ function star (item_id, user_id, is_starred) {
 	// Send the data to the server
 	
 	$.post(url, {item_id: item_id, user_id: user_id}, function(data) {
-		console.log(data);
 		$("#item_" + item_id + "-star-count").html(data);
-		console.log($("#item_" + item_id + "-star-count").text);
-		console.log("#item_" + item_id + "-star-count");
 		$("#item_wrapper_for_" + item_id + " .star a").toggleClass("starred"); 
 		$("#item_wrapper_for_" + item_id + " .star a").attr("onClick", "star(" + item_id + ", "+ user_id +", " + jsOptions +")");
 	}, "text");
