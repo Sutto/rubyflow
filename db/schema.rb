@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 12) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 11) do
     t.datetime "updated_at"
     t.string   "byline"
     t.integer  "comments_count",                :default => 0
+    t.integer  "stars_count",                   :default => 0
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|
