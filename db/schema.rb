@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(:version => 10) do
   create_table "open_id_authentication_settings", :force => true do |t|
     t.string "setting"
     t.binary "value"
+  end
+
+  create_table "stars", :id => false, :force => true do |t|
+    t.integer "item_id"
+    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|
