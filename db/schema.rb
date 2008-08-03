@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 14) do
+ActiveRecord::Schema.define(:version => 15) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 14) do
     t.integer  "admin",                                   :default => 0
     t.string   "identity_url"
     t.integer  "approved_for_feed",                       :default => 0
+    t.datetime "last_checked_at"
   end
 
 end

@@ -258,12 +258,21 @@ blockquote cite {
   line-height: 17px;  
 }
 
-#content .metadata, BLOCKQUOTE CITE {
+#content .item-changes {
+  margin: -1.4em 0 1.4em 2em;
+  color: #999;
+}
+
+#content .item-changes P {
+  font-size: 11px;
+  margin: 0;
+  padding: 0;
+}
+
+#content .metadata, BLOCKQUOTE CITE, #content .item-changes P {
   font-size: 11px;
   font-family: verdana, arial, sans-serif; 
 }
-
-
 
 #comments {
   /* border-top: 4px solid #ccc; */

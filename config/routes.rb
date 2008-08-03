@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'items'
 
-  map.resources :items do |items|
+  map.resources :items, :collection => {:recently => :get} do |items|
     items.resources :comments
   end
 

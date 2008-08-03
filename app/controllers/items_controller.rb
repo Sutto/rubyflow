@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_filter :login_required, :except => [:show, :list_for_tag, :index, :search, :category, :new, :create]
   before_filter :admin_required, :only => [:destroy]
   before_filter :permission_required, :only => [:edit, :update]  
-  before_filter :do_pagination, :only => [:index, :list_for_tag, :list_for_tags, :search]
+  before_filter :do_pagination, :only => [:index, :list_for_tag, :list_for_tags, :search, :recently]
   
   layout 'main'
   
@@ -157,6 +157,14 @@ class ItemsController < ApplicationController
     @category = Category.find_by_name(params[:id])
     go_404 and return unless @category
     @items = Item.find_all_for_all_tags(@category.query.split(/\s/))
+  end
+  
+  def recently
+    @last_checked_at = current_user.last_checked_at
+    conditions = ['items.updated_at > ? or comments.created_at > ?', @last_checked_at, @last_checked_at]
+    @items_count = current_user.starred_items.count(:conditions => conditions, :include => :comments)
+    @items       = current_user.starred_items.find(:all, :conditions => conditions, :include => :comments)
+    current_user.update_attribute :last_checked_at, Time.now
   end
   
   protected

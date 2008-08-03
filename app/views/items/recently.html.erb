@@ -1,0 +1,18 @@
+<%= render :partial => 'items/paginator' if @page_number > 1 %>
+
+<h2>Recently in your Flow</h2>
+
+<% if @items.empty? %>
+  <p>Nothings happened in your flow recently - try starring some more stories for more activity.</p>
+<% else %>
+  <br>
+<% end %>
+
+<% @items.each do |item| %>
+  <%= render :partial => 'item', :locals => { :item => item } -%>
+  <div class="item-changes">
+    <p>This item has <%= pluralize item.comments.select { |c| c.created_at > @last_checked_at }.size, "new comment" -%> and <%= item.updated_at > @last_checked_at ? "has" : "hasn't" -%> been edited.</p>
+  </div>
+<% end %>
+
+<%= render :partial => 'items/paginator' %>
