@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 12) do
+ActiveRecord::Schema.define(:version => 14) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(:version => 12) do
     t.binary "value"
   end
 
-  create_table "stars", :id => false, :force => true do |t|
-    t.integer "item_id"
+  create_table "stars", :force => true do |t|
     t.integer "user_id"
+    t.integer "item_id"
   end
 
   create_table "users", :force => true do |t|

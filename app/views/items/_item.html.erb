@@ -1,13 +1,16 @@
-<div class="post" style="position: relative;" onmouseover="$('<%= "#" + dom_id(item) %>').show();" onmouseout="$('<%= "#" + dom_id(item) %>').hide();">
+<div class="post" style="position: relative;" onmouseover="$('<%= "#" + dom_id(item) + ".admin-actions" %>').show();" onmouseout="$('<%=  "#" + dom_id(item) + ".admin-actions"%>').hide();" id="item_wrapper_for_<%= item.id %>">
   
 	<div class="entry"><%= safe(item.content) %>
-	  <% if logged_in? %><span class="star"><a href="#" class="starred">&#9733;</a></span></div><% end %>
+	  <% if logged_in? %><span class="star">
+	    <a href="#" class="<%= item.starred_class(current_user) %>" onClick="<%= "star(#{item.id}, #{current_user.id}, #{item.is_starred_by_user(current_user)})" %>">&#9733;</a>
+	    </span><% end %>
   <!-- p>Tags: <% item.tag_array.each do |tag| %><%= link_to tag, tag_url(tag) %> <% end %></p -->
+	</div>
 	
 	<div class="metadata">
 	  Posted by <%= user_link(item) %> 
 	  at <%= item.created_at.strftime("%R") %> 
-	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %> 
+	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %>. <%= link_to pluralize(item.stars.size, 'star'), "#{item_path(item)}/#stars", :id => "item_#{item.id}-star-count"%> 
   </div>
   
   <% div_for(item, :class => "admin-actions") do %>

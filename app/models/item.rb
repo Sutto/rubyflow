@@ -54,4 +54,16 @@ class Item < ActiveRecord::Base
   def self.count_all_for_tags(tags, options = {})
     count({ :conditions => [[*tags].collect { "tags LIKE ?" }.join(" OR "), *[*tags].collect { |a| "%:#{a} %" }] }.merge(options))
   end  
+
+	def is_starred_by_user(user)
+		user.starred_items.include? self
+	end
+
+  def starred_class(user)
+		if self.is_starred_by_user(user)
+			return "starred"
+		else
+			return ""
+		end
+	end
 end

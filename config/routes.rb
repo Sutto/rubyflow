@@ -10,7 +10,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :session, :controller => 'session'  
 
-	map.resources :stars
 
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'session', :action => 'new'
