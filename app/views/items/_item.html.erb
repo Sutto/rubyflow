@@ -1,21 +1,24 @@
 <div class="post" style="position: relative;" onmouseover="$('<%= "#" + dom_id(item) + ".admin-actions" %>').show();" onmouseout="$('<%=  "#" + dom_id(item) + ".admin-actions"%>').hide();" id="item_wrapper_for_<%= item.id %>">
   
-	<div class="entry"><%= safe(item.content) %>
-	  <% if logged_in? %><span class="star">
-	    <a href="#" class="<%= item.starred_class(current_user) %>" onClick="<%= "star(#{item.id}, #{current_user.id}, #{item.is_starred_by_user(current_user)})" %>">&#9733;</a>
-	    </span><% end %>
+	<div class="entry">
+	<%= safe(item.content) %>
   <!-- p>Tags: <% item.tag_array.each do |tag| %><%= link_to tag, tag_url(tag) %> <% end %></p -->
 	</div>
 	
 	<div class="metadata">
 	  Posted by <%= user_link(item) %> 
 	  at <%= item.created_at.strftime("%R") %> 
-	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %>. <%= link_to pluralize(item.stars.size, 'star'), "#{item_path(item)}/#stars", :id => "item_#{item.id}-star-count"%> 
+	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %>. <%= link_to pluralize(item.stars.size, 'star'), "#{item_path(item)}/#stars", :id => "item_#{item.id}-star-count"%>
+	  <% if logged_in? %>
+	   &ndash; <span class="star">
+	    <a href="#" class="<%= item.starred_class(current_user) %>" onClick="<%= "star(#{item.id}, #{current_user.id}, #{item.is_starred_by_user(current_user)})" %>"><%= item.is_starred_by_user(current_user) ? "unstar" : "star" -%> this post</a>
+	    </span>
+	  <% end %>
   </div>
   
   <% div_for(item, :class => "admin-actions") do %>
 	  <% if admin? %> 
-	    <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
+	    <%= link_to 'Remove', item, :confirm => 'Are you sure?', :method => :delete %>
 	  <% end %>
 
 	  <% if item.user == current_user || admin? %> 

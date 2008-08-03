@@ -1,8 +1,12 @@
 <%= render :partial => @item %>
   
 <div id="comments">
+  
+  <% unless @item.stars.blank? %>
   <h3>Starred by:</h3>
-  <p><% for star in @item.stars %><%= link_to star.user.login, star.user.url %> <% end %></p>
+  <p><%= @item.stars.map { |star|  link_to star.user.login, star.user.url }.to_sentence -%></p>
+  <% end %>
+  
   <h3><%= pluralize @item.comments.count, 'comment' %></h3>
   <% @item.comments.each do |comment| %>
     <blockquote class="comment"><span class="a">&#147;</span><span class="b">&#148;</span><%= safe(comment.content) %><cite><%= comment.user ? %Q{<a href="#{comment.user.url}">#{comment.user.login}</a>} : comment.byline %> - <%= comment.created_at.strftime("%B %d, %Y %R") %></cite></blockquote>

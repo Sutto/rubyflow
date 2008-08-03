@@ -396,16 +396,12 @@ BODY.pythonflow .entry A:visited { text-decoration: none; }
 /* @group Star */
 
 .star, .star a {
-	font-size: 1.3em !important;
-	color: #CED3D3 !important;
-	font-style: normal !important;
-	font-weight: normal !important;
 	text-decoration: none !important;
 		
 }
       
 .star a.starred {
-	color: #FFE630 !important;
+	color: #9F392C !important;
 	text-decoration: none !important;
 }
 /* @end */

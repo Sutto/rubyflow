@@ -16,8 +16,7 @@ function star (item_id, user_id, is_starred) {
 		$("#item_" + item_id + "-star-count").html(data);
 		$("#item_wrapper_for_" + item_id + " .star a").toggleClass("starred"); 
 		$("#item_wrapper_for_" + item_id + " .star a").attr("onClick", "star(" + item_id + ", "+ user_id +", " + jsOptions +")");
+		$("#item_wrapper_for_" + item_id + " .star a").html((jsOptions == "false" ? "" : "un") + "star this post");
 	}, "text");
-	
-	
 	
 }
