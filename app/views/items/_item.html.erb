@@ -1,4 +1,4 @@
-<div class="post" style="position: relative;" onmousemove="$('<%= dom_id(item) %>').show();" onmousemove="$('<%= dom_id(item) %>').hide();">
+<div class="post" style="position: relative;" onmouseover="$('<%= "#" + dom_id(item) %>').show();" onmouseout="$('<%= "#" + dom_id(item) %>').hide();">
 	<div class="entry"><%= safe(item.content) %></div>
   <!-- p>Tags: <% item.tag_array.each do |tag| %><%= link_to tag, tag_url(tag) %> <% end %></p -->
 	
@@ -13,7 +13,7 @@
 	    <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
 	  <% end %>
 
-	  <% if item.user == current_user %> 
+	  <% if item.user == current_user || admin? %> 
       <%= link_to 'Edit', edit_item_path(item) %>
 	  <% end %>
 	<% end %>

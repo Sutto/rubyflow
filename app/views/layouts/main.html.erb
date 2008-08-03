@@ -12,6 +12,7 @@
 	  <% if @noindex %><meta name="robots" content="noindex, nofollow" /><% end -%>
 	  <link rel="alternate" type="application/rss+xml" title="<%= APP_CONFIG[:app_title] %>" href="<%= APP_CONFIG[:rss_url] %>" />	    
 		<%= stylesheet_link_tag "main" %>
+		<%= javascript_include_tag :defaults, :cache => true%>
 	</head>
 
 	<body class="<%= @body_class %> <%= APP_CONFIG[:body_class] %>">
@@ -41,7 +42,8 @@
 			
 			<div class="float"></div><div class="floatcontainer"><div class="float"></div></div>
 			
-		</div>
+		</div>    
+	<% if APP_CONFIG[:ga] %>
 	<script type="text/javascript">
   var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
   document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -50,6 +52,7 @@
   var pageTracker = _gat._getTracker("<%= APP_CONFIG[:ga] %>");
   pageTracker._initData();
   pageTracker._trackPageview();
-  </script>
+  </script>             
+  <% end %>
 	</body>
 </html>
