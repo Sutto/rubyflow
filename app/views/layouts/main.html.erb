@@ -12,7 +12,7 @@
 	  <% if @noindex %><meta name="robots" content="noindex, nofollow" /><% end -%>
 	  <link rel="alternate" type="application/rss+xml" title="<%= APP_CONFIG[:app_title] %>" href="<%= APP_CONFIG[:rss_url] %>" />	    
 		<%= stylesheet_link_tag "main" %>
-		<%= javascript_include_tag :defaults, :cache => true%>
+		<%= javascript_include_tag :defaults, :cache => true if APP_CONFIG[:uses_javascript] %>
 	</head>
 
 	<body class="<%= @body_class %> <%= APP_CONFIG[:body_class] %>">
@@ -23,6 +23,7 @@
   		  <%= link_to 'Home', root_url %> | <a href="<%= APP_CONFIG[:rss_url] %>">RSS Feed</a> | 
   		  <%= link_to 'Post Item', new_item_path, :class => 'rubyred' %> |
   		  <% if logged_in? %>
+  		    <%= link_to 'Recently', recently_items_url -%> |
   		    <%= link_to 'Log Out', logout_url %>
   		  <% else %>
   			  <%= link_to 'Sign Up', signup_url %> | <%= link_to 'Log In', login_url %>

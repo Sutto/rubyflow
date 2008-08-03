@@ -7,4 +7,10 @@ module ItemsHelper
       item.byline
     end
   end
+  
+  def star_link(item)
+    starred = item.is_starred_by_user(current_user)
+    path    = starred ? item_remove_star_path(item) : item_add_star_path(item)
+    return content_tag(:span, link_to("#{starred ? 'unstar' : 'star'} this post", path, :class => item.starred_class(current_user)), :class => "star")
+  end
 end

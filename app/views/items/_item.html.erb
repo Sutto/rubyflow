@@ -1,4 +1,4 @@
-<div class="post" style="position: relative;" onmouseover="$('<%= "#" + dom_id(item) + ".admin-actions" %>').show();" onmouseout="$('<%=  "#" + dom_id(item) + ".admin-actions"%>').hide();" id="item_wrapper_for_<%= item.id %>">
+<div class="post" style="position: relative;" id="item_wrapper_for_<%= item.id %>">
   
 	<div class="entry">
 	<%= safe(item.content) %>
@@ -8,11 +8,9 @@
 	<div class="metadata">
 	  Posted by <%= user_link(item) %> 
 	  at <%= item.created_at.strftime("%R") %> 
-	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %>. <%= link_to pluralize(item.stars.size, 'star'), "#{item_path(item)}/#stars", :id => "item_#{item.id}-star-count"%>
+	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %> &amp; <%= link_to pluralize(item.stars.size, 'star'), "#{item_path(item)}/#stars", :id => "item_#{item.id}-star-count"%>
 	  <% if logged_in? %>
-	   &ndash; <span class="star">
-	    <a href="#" class="<%= item.starred_class(current_user) %>" onClick="<%= "star(#{item.id}, #{current_user.id}, #{item.is_starred_by_user(current_user)})" %>"><%= item.is_starred_by_user(current_user) ? "unstar" : "star" -%> this post</a>
-	    </span>
+	   &ndash; <%= star_link item %>
 	  <% end %>
   </div>
   
@@ -26,4 +24,3 @@
 	  <% end %>
 	<% end %>
 </div>
-

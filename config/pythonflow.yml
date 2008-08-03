@@ -7,6 +7,7 @@ rss_url: http://feeds.feedburner.com/Pythonflow
 meta_keywords: "python, python news, python blog, django"
 meta_author: "Peter Cooper"
 body_class: pythonflow
+uses_javascript: false
 ga: UA-2237791-8
 sidebar: |-
   <h3>What?</h3><p>PythonFlow is an experimental community driven Python links site. Items are not added automatically, but chosen and summarized by community members, resulting in a better quality and context than <a href="http://python.reddit.com/">social bookmarking sites</a> can offer.</p>

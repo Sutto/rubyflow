@@ -161,7 +161,7 @@ class ItemsController < ApplicationController
   
   def recently
     @last_checked_at = current_user.last_checked_at
-    conditions = ['items.updated_at > ? or comments.created_at > ?', @last_checked_at, @last_checked_at]
+    conditions   = ['items.updated_at > ? or comments.created_at > ?', @last_checked_at, @last_checked_at]
     @items_count = current_user.starred_items.count(:conditions => conditions, :include => :comments)
     @items       = current_user.starred_items.find(:all, :conditions => conditions, :include => :comments)
     current_user.update_attribute :last_checked_at, Time.now
