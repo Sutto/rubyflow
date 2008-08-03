@@ -40,4 +40,5 @@ module ApplicationHelper
 
     txt
   end
+  
 end

@@ -231,6 +231,16 @@ blockquote.comment span.a, blockquote.comment span.b { color: #ddd; }
 blockquote.usercomment { background-color: #def; }
 blockquote.usercomment span.a, blockquote.usercomment span.b { color: #8ac; }
 
+.formatting-help {
+	font-size: 13px; 
+	font-family: verdana; 
+	line-height: 15px; 
+	letter-spacing: 0px;
+	background-color: #ffc; 
+	padding: 4px 16px; 
+	border-left: 3px solid #999; 
+}
+
 blockquote cite {
   display: block;
   text-align: right;
@@ -337,6 +347,30 @@ width: 500px; height: 220px;
 }
 
 H1 A { color: #c00; }
+
+.title {
+	font-weight: bold;
+}
+
+.description {
+	font-style: italic;
+	font-weight: normal;
+	font-size: 90%;
+}
+
+.hint {
+	font-style: italic;
+	font-weight: normal;
+	font-size: 90%;
+	color: #666;
+}
+
+.admin-actions {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	display: none;
+}
 
 /* @end */
 

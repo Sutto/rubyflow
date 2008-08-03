@@ -1,0 +1,34 @@
+<blockquote class="comment">
+  <span class="a">&#147;</span><span class="b">&#148;</span>
+  
+  <% form_for [item, comment] do |f| %>
+    
+    <h3>Post a Comment</h3>
+
+    <% if comment.errors.size > 0 %>
+      <p class="message">Error! Your comment is too long or too short.</p>
+    <% end %>
+
+    
+    <% if logged_in? %>
+      <p>Posting as <strong><%= current_user.login %></strong></p>
+    <% else %>
+      <p><em>Note: If you are a registered user, <%= link_to 'log in', login_url %> to populate these fields.</em></p>
+      <p><%= f.text_field :byline %>
+      <label for="author"><small>Name / Byline (required)</small></label></p>
+    <% end %>
+
+    <p class="formatting-help">
+      <strong>If you wish, you may use these HTML tags to format your comment:</strong><br />
+      <code style="font-size: 80%;">
+        &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strong&gt;
+      </code>
+    </p>
+    <p><%= f.text_area :content %></p>
+
+    <%= render :partial => 'home/signup_captcha' unless logged_in? %>
+
+    <p><%= f.submit "Post Comment" %></p>
+  <% end %>
+  
+</blockquote>

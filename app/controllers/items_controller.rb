@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_filter :login_required, :except => [:show, :list_for_tag, :index, :search, :category, :new, :create]
-  before_filter :admin_required, :only => [:edit, :destroy, :update]
+  before_filter :admin_required, :only => [:destroy]
+  before_filter :permission_required, :only => [:edit, :update]  
   before_filter :do_pagination, :only => [:index, :list_for_tag, :list_for_tags, :search]
   
   layout 'main'
@@ -165,4 +166,5 @@ class ItemsController < ApplicationController
     render :status => 404, :text => "404 Not Found" and return unless @item
     render :status => 403, :text => "403 Forbidden" and return unless @item.user_id == current_user.id || admin?
   end
+  
 end

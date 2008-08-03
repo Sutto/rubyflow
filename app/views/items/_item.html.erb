@@ -1,6 +1,21 @@
-<div class="post">
+<div class="post" style="position: relative;" onmousemove="$('<%= dom_id(item) %>').show();" onmousemove="$('<%= dom_id(item) %>').hide();">
 	<div class="entry"><%= safe(item.content) %></div>
   <!-- p>Tags: <% item.tag_array.each do |tag| %><%= link_to tag, tag_url(tag) %> <% end %></p -->
-	<div class="metadata">Posted by <%= item.user ? %Q{<a href="#{item.user.url}" #{"rel=\"nofollow\"" unless item.user.approved_for_feed == 1}>#{item.user.login}</a>} : item.byline %> at <%= item.created_at.strftime("%R") %> - <a href="<%= url_for item_url(item) %>"><%= pluralize item.comments.size, 'comment' %></a> <%= link_to 'Edit', edit_item_path(item) if admin? %> <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete if admin? %></div>
+	
+	<div class="metadata">
+	  Posted by <%= user_link(item) %> 
+	  at <%= item.created_at.strftime("%R") %> 
+	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %> 
+  </div>
+  
+  <% div_for(item, :class => "admin-actions") do %>
+	  <% if admin? %> 
+	    <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
+	  <% end %>
+
+	  <% if item.user == current_user %> 
+      <%= link_to 'Edit', edit_item_path(item) %>
+	  <% end %>
+	<% end %>
 </div>
 

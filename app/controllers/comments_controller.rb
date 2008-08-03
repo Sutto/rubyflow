@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :admin_required, :except => [:create]
+  before_filter :load_item
   
   layout 'main'
   
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     @comment = Comment.new(params[:comment])
-    @item = Item.find(params[:item_id])
     @comment.item = @item
     
     if logged_in?
@@ -27,7 +27,6 @@ class CommentsController < ApplicationController
         return
       end
     end
-    
 
     respond_to do |format|
       if @comment.save
@@ -69,5 +68,10 @@ class CommentsController < ApplicationController
       format.html { redirect_to(comments_url) }
       format.xml  { head :ok }
     end
+  end
+  
+private
+  def load_item
+    @item = Item.find(params[:item_id])
   end
 end

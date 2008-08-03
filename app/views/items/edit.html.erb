@@ -1,32 +1,7 @@
 <h1>Editing item</h1>
 
-<%= error_messages_for :item %>
 
-<% form_for(@item) do |f| %>
-  <p>
-    <b>Title</b><br />
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <b>Url</b><br />
-    <%= f.text_field :url %>
-  </p>
-
-  <p>
-    <b>Content</b><br />
-    <%= f.text_area :content %>
-  </p>
-
-  <p>
-    <b>Tags</b><br />
-    <%= f.text_field :tags %>
-  </p>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
+<%= render :partial => 'edit_item', :locals => { :item => @item } %>
 
 <%= link_to 'Show', @item %> |
 <%= link_to 'Back', items_path %>

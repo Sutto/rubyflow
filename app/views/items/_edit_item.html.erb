@@ -1,0 +1,40 @@
+<% form_for(item) do |f| %>
+  <%= error_messages_for :item %>
+
+  <blockquote class="comment">
+    <span class="a">&#147;</span><span class="b">&#148;</span>
+
+  
+    <% if logged_in? %>
+      <p>Posting as <strong><%= current_user.login %></strong></p>
+    <% else %>
+      <p class="description">
+        Note: If you are a registered user, <%= link_to 'log in', login_url %> to populate these fields automatically.
+      </p>
+      <p>
+        <%= f.text_field :byline %>
+        <label for="byline" class="title">Name / Byline <span class="hint">(required)</span></label>
+      </p>
+    <% end %>
+  
+    <p>
+      <%= f.text_field :title %>
+      <label for="title" class="title">Title <span class="hint">(used for archive pages, etc.)</span></label>
+    </p>
+  
+    <p class="formatting-help">
+      <strong>If you wish, you may use these HTML tags to format your post:</strong><br />
+      <code style="font-size: 80%;">
+        &lt;a href=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strong&gt;
+      </code>
+        <br /><br />
+      <em>Yes, you <b>must use HTML</b> and not Textile or Markdown for now.</em></small>
+    </p>
+    
+    <p><%= f.text_area :content, :cols => 60, :rows => 8 %></p>
+    
+    <%= render :partial => 'home/signup_captcha' unless logged_in? %>
+    
+    <p><%= f.submit "Post Item" %></p>
+</blockquote>
+<% end %>
