@@ -391,4 +391,19 @@ BODY.pythonflow A:hover { color: #009900; }
 BODY.pythonflow .entry A:visited { text-decoration: none; }
 
 
+/* @end */      
+
+/* @group Star */
+
+.star, .star a {
+	font-size: 1.3em !important;
+	color: #CED3D3 !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	
+}
+      
+.star a.starred {
+	color: #FFE630 !important;
+}
 /* @end */

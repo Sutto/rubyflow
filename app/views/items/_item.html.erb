@@ -1,5 +1,7 @@
 <div class="post" style="position: relative;" onmouseover="$('<%= "#" + dom_id(item) %>').show();" onmouseout="$('<%= "#" + dom_id(item) %>').hide();">
-	<div class="entry"><%= safe(item.content) %></div>
+  
+	<div class="entry"><%= safe(item.content) %>
+	  <span class="star"><a href="#" class="starred">&#9733;</a></span></div>
   <!-- p>Tags: <% item.tag_array.each do |tag| %><%= link_to tag, tag_url(tag) %> <% end %></p -->
 	
 	<div class="metadata">
