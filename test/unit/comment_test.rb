@@ -1,8 +1,9 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
-  end
+  
+  should_belong_to :user
+  should_belong_to :item
+  
+  should_ensure_length_in_range :content, (1..10000)
 end
