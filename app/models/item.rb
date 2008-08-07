@@ -37,6 +37,7 @@ class Item < ActiveRecord::Base
   def self.find_all_for_all_tags(tags, options = {})
     find(:all, { :conditions => [[*tags].collect { "tags LIKE ?" }.join(" AND "), *[*tags].collect { |a| "%:#{a} %" }] }.merge(options))
   end
+  
   def self.count_all_for_all_tags(tags, options = {})
     count({ :conditions => [[*tags].collect { "tags LIKE ?" }.join(" AND "), *[*tags].collect { |a| "%:#{a} %" }] }.merge(options))
   end
@@ -44,6 +45,7 @@ class Item < ActiveRecord::Base
   def self.find_all_for_tag(tag, options = {})
     find(:all, { :conditions => ["tags LIKE ?", "%#{tag}%"] }.merge(options))
   end
+  
   def self.count_all_for_tag(tag, options = {})
     count({ :conditions => ["tags LIKE ?", "%#{tag}%"] }.merge(options))
   end
@@ -59,6 +61,7 @@ class Item < ActiveRecord::Base
 		user.starred_items.include? self
 	end
 
+  # TODO move to a helper
   def starred_class(user)
 		if self.is_starred_by_user(user)
 			return "starred"

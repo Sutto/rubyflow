@@ -3,6 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 
 require 'factory_girl'
+Dir[File.join(RAILS_ROOT, 'test', 'factories', '*')].each do |file|
+  require file
+end
 
 class Test::Unit::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
