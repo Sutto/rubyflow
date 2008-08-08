@@ -12,5 +12,9 @@
 <p><label for="remember_me">Remember me (for a year):</label>
 <%= check_box_tag 'remember_me' %></p>
 
-<p><%= submit_tag 'Log In' %></p>
+<p>
+  <%= submit_tag 'Log In' %>
+  or
+  <%= link_to 'Signup for a new account', signup_path, :title => 'It only takes about 15 seconds.' %>  
+</p>
 <% end -%>
