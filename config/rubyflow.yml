@@ -7,7 +7,14 @@ rss_url: http://feeds.feedburner.com/Rubyflow
 meta_keywords: "ruby, ruby news, ruby blog, rails, rubyonrails"
 meta_author: "Peter Cooper"
 body_class: rubyflow
-uses_javascript: true
+
+# Set this to true for a more fancy interface, but for the cost of page load time
+uses_javascript: false
+
+# Edit expiration default: 60 (this means that editing ends 60 minutes after last update of item)
+# Set to 0 or omit to always allow editing of items by its owner
+edit_expiration_in_minutes: 60
+
 # ga: UA-2237791-7
 sidebar: |-
   <h3>What?</h3><p>RubyFlow is a community driven Ruby links site. Items are not added automatically, but chosen and summarized by the community, resulting in a higher quality of links than <a href="http://ruby.reddit.com/">social bookmarking sites.</a></p>
