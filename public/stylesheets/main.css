@@ -129,14 +129,14 @@ A.home {
   font-weight: bold;
 }
 
+/* Commented for annoyance-factor (gray gets annoying / ruins the look imho)
 .even {
 	background-color: #ffffff;
 }
 
 .odd {
 	background-color: #f0f0f0;
-
-}
+}*/
 
 BODY.inner .entry {
   line-height: 1.6em;

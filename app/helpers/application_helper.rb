@@ -13,32 +13,7 @@ module ApplicationHelper
   end
   
   def safe(txt)
-    # Poor mans' sanitization!
-    
-    txt = h(txt)
-    txt.gsub!(/\&quot;/, '"')
-    txt.gsub!(/\&gt;/, '>')
-    
-    txt.gsub!(/\n/, '<br />')
-    
-    txt.gsub!(/\&lt;a href/, '<a href')
-    txt.gsub!(/\&lt;\/a>/, '</a>')
-
-    txt.gsub!(/\&lt;\/blockquote>/, '</blockquote>')
-    txt.gsub!(/\&lt;\/code>/, '</code>')
-    txt.gsub!(/\&lt;\/b>/, '</b>')
-    txt.gsub!(/\&lt;\/strong>/, '</strong>')
-    txt.gsub!(/\&lt;\/i>/, '</i>')
-    txt.gsub!(/\&lt;\/em>/, '</em>')
-
-    txt.gsub!(/\&lt;blockquote>/, '<blockquote>')
-    txt.gsub!(/\&lt;code>/, '<code>')
-    txt.gsub!(/\&lt;b>/, '<b>')
-    txt.gsub!(/\&lt;strong>/, '<strong>')
-    txt.gsub!(/\&lt;i>/, '<i>')
-    txt.gsub!(/\&lt;em>/, '<em>')
-
-    txt
+    sanitize(txt, :tags => %w(a p code b strong i em blockquote), :attributes => %w(href)).split("\n").join("\n<br />")
   end
   
 end
