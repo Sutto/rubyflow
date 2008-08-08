@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 15) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.integer  "parent_id"
+    t.integer  "parent_id",  :limit => 11
     t.string   "query"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 15) do
   create_table "comments", :force => true do |t|
     t.text     "content"
     t.string   "byline"
-    t.integer  "user_id"
-    t.integer  "item_id"
+    t.integer  "user_id",    :limit => 11
+    t.integer  "item_id",    :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,27 +35,27 @@ ActiveRecord::Schema.define(:version => 15) do
     t.text     "content"
     t.text     "metadata"
     t.string   "name"
-    t.text     "tags",           :limit => 255
-    t.integer  "user_id"
+    t.text     "tags"
+    t.integer  "user_id",        :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "byline"
-    t.integer  "comments_count",                :default => 0
-    t.integer  "stars_count",                   :default => 0
+    t.integer  "comments_count", :limit => 11, :default => 0
+    t.integer  "stars_count",    :limit => 11, :default => 0
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.binary  "server_url"
     t.string  "handle"
     t.binary  "secret"
-    t.integer "issued"
-    t.integer "lifetime"
+    t.integer "issued",     :limit => 11
+    t.integer "lifetime",   :limit => 11
     t.string  "assoc_type"
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
     t.string  "nonce"
-    t.integer "created"
+    t.integer "created", :limit => 11
   end
 
   create_table "open_id_authentication_settings", :force => true do |t|
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(:version => 15) do
   end
 
   create_table "stars", :force => true do |t|
-    t.integer "user_id"
-    t.integer "item_id"
+    t.integer "user_id", :limit => 11
+    t.integer "item_id", :limit => 11
   end
 
   create_table "users", :force => true do |t|
@@ -79,9 +79,9 @@ ActiveRecord::Schema.define(:version => 15) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
-    t.integer  "admin",                                   :default => 0
+    t.integer  "admin",                     :limit => 11, :default => 0
     t.string   "identity_url"
-    t.integer  "approved_for_feed",                       :default => 0
+    t.integer  "approved_for_feed",         :limit => 11, :default => 0
     t.datetime "last_checked_at"
   end
 
