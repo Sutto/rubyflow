@@ -9,16 +9,9 @@ module ItemsHelper
   end
   
   def star_link(item)
-    starred = item.is_starred_by_user(current_user)
-    path    = starred ? item_remove_star_path(item) : item_add_star_path(item)
-    if starred
+    if item.is_starred_by_user(current_user)
       return " &ndash; " + content_tag(:span, link_to("unstar this post", item_remove_star_path(item), :class => item.starred_class(current_user)), :class => "star")
     end
-  end
-  
-  # Convert URLs in text automatically to links
-  def auto_link(text)
-    text.gsub(/ (http:\/\/[^ !,\?]+)/, ' <a href="\1">\1</a>')
   end
   
   # Shows the time left to edit the current item, or nil if it's always allowed
