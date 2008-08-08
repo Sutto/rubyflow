@@ -1,26 +1,27 @@
 <div class="post" style="position: relative;" id="item_wrapper_for_<%= item.id %>">
   
 	<div class="entry">
-	<%= safe(item.content) %>
+	<%= auto_link(safe(item.content)) %>
   <!-- p>Tags: <% item.tag_array.each do |tag| %><%= link_to tag, tag_url(tag) %> <% end %></p -->
 	</div>
 	
 	<div class="metadata">
 	  Posted by <%= user_link(item) %> 
-	  at <%= item.created_at.strftime("%R") %> 
-	  - <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments" %> &amp; <%= link_to pluralize(item.stars.size, 'star'), "#{item_path(item)}/#stars", :id => "item_#{item.id}-star-count"%>
-	  <% if logged_in? %>
-	   &ndash; <%= star_link item %>
-	  <% end %>
+	  at <%= item.created_at.strftime("%R") %> &mdash; 
+	  <%= link_to pluralize(item.comments.size, 'comment'), "#{item_path(item)}/#comments", :class => 'comments_link', :title => "Read or write comments" %> | 
+	  <%= link_to pluralize(item.stars.size, 'star'), item_add_star_path(item), :title => 'Star this post', :id => "item_#{item.id}-star-count", :class => 'star' %>
+	  <% if logged_in? %> <%= star_link(item) %> <% end %>
   </div>
   
   <% div_for(item, :class => "admin-actions") do %>
 	  <% if admin? %> 
 	    <%= link_to 'Remove', item, :confirm => 'Are you sure?', :method => :delete %>
 	  <% end %>
-
-	  <% if item.user == current_user || admin? %> 
-      <%= link_to 'Edit', edit_item_path(item) %>
+    
+    <% time_left = edit_time_left(item) %>
+	  <% if admin? || (item.user == current_user && (time_left.nil? || time_left > 0))  %> 
+      <%= link_to 'Edit', edit_item_path(item), 
+                  :title => "Last chance of editing ends #{time_left.nil? ? 'never' : ('in ' + time_left.to_s + ' minutes')}." %>
 	  <% end %>
 	<% end %>
 </div>

@@ -35,6 +35,6 @@
     
     <%= render :partial => 'home/signup_captcha' unless logged_in? %>
     
-    <p><%= f.submit "Post Item" %></p>
+    <p><%= f.submit "#{method == 'post' ? 'Post' : 'Update'} Item" %></p>
 </blockquote>
 <% end %>

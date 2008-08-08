@@ -121,12 +121,21 @@ A.home {
 }
 
 .post {
-	padding-left: 2em;
+	margin-left: 2em;
 	margin-bottom: 1.4em;
 }
 
 .post A {
   font-weight: bold;
+}
+
+.even {
+	background-color: #ffffff;
+}
+
+.odd {
+	background-color: #f0f0f0;
+
 }
 
 BODY.inner .entry {
@@ -274,6 +283,10 @@ blockquote cite {
   font-family: verdana, arial, sans-serif; 
 }
 
+.comments_link {
+	color: #666 !important; 
+}
+
 #comments {
   /* border-top: 4px solid #ccc; */
   margin-top: 18px;
@@ -405,7 +418,7 @@ BODY.pythonflow .entry A:visited { text-decoration: none; }
 
 .star, .star a {
 	text-decoration: none !important;
-		
+	color: #9F392C !important;
 }
       
 .star a.starred {
